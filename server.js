@@ -27,26 +27,84 @@ function choices(){
       'Add a role',
       'Update employee role',
       'Delete an employee',
+      'Quit'
     ]
   })
   .then(function (answer) {
     switch(answer.selctions) {
       case 'View all departments':
-          allDepartments();
+        allDepartments();
+        break;
+      case 'Add a department':
+        addDepartment();
+        break;
+      case 'View all employees':
+        allEmployees();
+        break;
+      case 'Add an employee':
+        addEmployee();
+        break;
+      case 'View all roles':
+        allRoles();
+        break;
+      case 'Add a role':
+        addRole();
+        break;
+      case 'Update employee role':
+        updateRole();
+        break;
+      case 'Remove an employee':
+        removeEmployee();
+        break;
+      case 'Quit':
+        quit();
+        break;
+        
+
     }
   }
   )};
   
 function allDepartments() {
-    var query = 'SELECT * FROM department';
-    connection.query(query, function(err, res) {
-      if (err) {
-        res.status(400).json({ error: err.message });
-      }
-        console.table('All Departments:', res);
-        choices();
-    })
-    };
+  
+};
 
+function addDepartment() {
+  inquirer
+  .prompt({
+    type: "input",
+    name: "department_name",
+    message: "Please enter the departnment you would like to add."
+  })
+  .then
+};
+
+function allEmployees() {
+
+};
+
+function addEmployee() {
+
+};
+
+function allRoles() {
+
+};
+
+function addRole() {
+
+};
+
+function updateRole() {
+
+};
+
+function removeEmployee() {
+   
+};
+
+function quit() {
+
+};
 
 
