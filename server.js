@@ -12,7 +12,7 @@ app.use(express.json());
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'employees_db',
+    database: 'emplyees_db',
     password: 'Soundtribe9!',
     port: 3306
   });
@@ -38,15 +38,83 @@ async function run(){
       'Quit'
     ]
   }
-]);
-switch (option) {
-  case 'View all departments':
-    
-  console.error(`error please try a different selection: ${err}`);
-  break;
+])
+.then(function (answer) {
+  switch(answer.selctions) {
+    case 'View all departments':
+      allDepartments();
+      break;
+    case 'Add a department':
+      addDepartment();
+      break;
+    case 'View all employees':
+      allEmployees();
+      break;
+    case 'Add an employee':
+      addEmployee();
+      break;
+    case 'View all roles':
+      allRoles();
+      break;
+    case 'Add a role':
+      addRole();
+      break;
+    case 'Update employee role':
+      updateRole();
+      break;
+    case 'Remove an employee':
+      removeEmployee();
+      break;
+    case 'Quit':
+      quit();
+      break;
 
-  
+
+  }
 }
+)};
+
+function allDepartments() {
+
+};
+
+function addDepartment() {
+inquirer
+.prompt({
+  type: "input",
+  name: "department_name",
+  message: "Please enter the departnment you would like to add."
+})
+.then
+};
+
+function allEmployees() {
+
+};
+
+function addEmployee() {
+
+};
+
+function allRoles() {
+
+};
+
+function addRole() {
+
+};
+
+function updateRole() {
+
+};
+
+function removeEmployee() {
+
+};
+
+function quit() {
+
+};
 
 
 
@@ -59,6 +127,5 @@ switch (option) {
 
 
 
-}
 
-run();
+
