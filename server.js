@@ -17,28 +17,23 @@ const connection = mysql.createConnection({
     port: 3306
   });
 
-async function run(){
-  const connection = mysql.createConnection;
-  
-  
-  const { option } = await inquirer.prompt([
-    {
-    type: "list",
-    name: "selections",
-    message: "Employee database. Please select an option.",
-    choices: [
-      'View all departments',
-      'Add a department',
-      'View all employees',
-      'Add an employee',
-      'View all roles',
-      'Add a role',
-      'Update employee role',
-      'Delete an employee',
-      'Quit'
-    ]
-  }
-])
+  function choices(){
+    inquirer
+    .prompt({
+      type: "list",
+      name: "selections",
+      message: "Employee database. Please select an option.",
+      choices: [
+        'View all departments',
+        'Add a department',
+        'View all employees',
+        'Add an employee',
+        'View all roles',
+        'Add a role',
+        'Update employee role',
+        'Delete an employee',
+      ]
+    })
 .then(function (answer) {
   switch(answer.selctions) {
     case 'View all departments':
@@ -83,7 +78,7 @@ inquirer
 .prompt({
   type: "input",
   name: "department_name",
-  message: "Please enter the departnment you would like to add."
+  message: "Please enter the department you would like to add."
 })
 .then
 };
