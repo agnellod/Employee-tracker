@@ -70,25 +70,92 @@ const connection = mysql.createConnection({
 )};
 
 function allDepartments() {
-
+  db.query(`SELECT * FROM department`, function (err, res) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log(`\n`);
+    console.table(res);
+      choices();
+  })
 };
 
 function addDepartment() {
 inquirer
 .prompt({
   type: "input",
-  name: "department_name",
-  message: "Please enter the department you would like to add."
+  name: "departmentName",
+  message: "Enter the department you would like to add."
 })
-.then
-};
+.then((department) => {
+  db.query(
+    `INSERT INTO department (depName) VALUES (?)`,
+    [department.depName],
+    function (err, results) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log(`\nDepartment added successfully!\n`);
+      allDepartments();
+    }
+  );
+});
+}
 
 function allEmployees() {
-
-};
-
+  db.query(
+    `
+      SELECT 
+        employee.id, 
+        employee.first_name, 
+        employee.last_name, 
+        role.job_title, 
+        department.depName AS department, 
+        role.salary, 
+        CONCAT(manager.first_name, ' ', manager.last_name) AS manager 
+      FROM employee
+      LEFT JOIN role ON employee.role_id = role.id
+      LEFT JOIN department ON role.department_id = department.id
+      LEFT JOIN employee manager ON employee.manager_id = manager.id
+    `,
+    function (err, res) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log(`\n`);
+      console.table(res);
+      choices();
+    }
+  );
+}
 function addEmployee() {
-
+ inquirer
+ .prompt([
+  {
+  type: "input",
+  name: "firstName",
+  message: "Enter the first nmae of the employee you'd like to add."
+ },
+ {
+  type: "input",
+  name: "lastName",
+  message: "Enter the last name of the employee you'd like to add."
+ },
+ {
+  type: "input",
+  name: "employeeRole",
+  message: "Enter the employee's role."
+ },
+ {
+  type: "input",
+  name: "employeeManager",
+  message: "Enter the employee's manager."
+ }
+])
+.then(function)
 };
 
 function allRoles() {
