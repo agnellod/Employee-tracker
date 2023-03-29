@@ -9,7 +9,7 @@ VALUES
 ('Security'),
 ('Sales');
 
-INSERT INTO role (title, salary, dep_id)
+INSERT INTO roles (title, salary, dep_id)
 VALUES
 ('Web Developer', 80000, 1),
 ('Accountant', 50000, 2),
@@ -18,7 +18,7 @@ VALUES
 ('Engineer', 100000, 5),
 ('Sales Rep', 60000, 6);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES 
 ('Ari', 'Mccormick', 1, NULL),
 ('Rachel', 'Bishop', 2, 1),
